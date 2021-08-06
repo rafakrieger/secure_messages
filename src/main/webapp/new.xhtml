@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./template.xhtml" xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="conteudo">
+
+		<p:panel id="painel_conteudo" header="New User">
+			<h:form id="form_novo">
+				<p:panelGrid columns="4" layout="flex"
+					columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"
+					contentStyleClass="p-align-baseline ui-fluid">
+
+					<p:outputLabel for="nome" value="Name:" />
+					<p:inputText id="nome" value="#{userC.user.nome}" required="true"
+						requiredMessage="Name required" />
+
+					<p:outputLabel for="email" value="E-mail:" />
+					<p:inputText id="email" value="#{userC.user.email}" required="true"
+						requiredMessage="E-mail required" />
+
+					<p:outputLabel for="login" value="Login:" />
+					<p:inputText id="login" value="#{userC.user.login}" required="true"
+						requiredMessage="Login required" />
+						
+					<h:outputLabel value="" />
+					<h:outputLabel value="" />
+
+					<p:outputLabel for="pwd1" value="Password" />
+					<p:password id="pwd1" value="#{userC.user.password}" match="pwd2"
+						label="Password 1" requiredMessage="Password required"
+						required="true" />
+
+					<p:outputLabel for="pwd2" value="Confirm password" />
+					<p:password id="pwd2" value="#{userC.user.password}"
+						label="Password 2"
+						requiredMessage="Password confirmation required" required="true" />	
+
+				</p:panelGrid>
+
+				<p:commandButton value="Save" actionListener="#{userC.save}"
+					outcome="login" update="@all"/>
+
+			</h:form>
+
+		</p:panel>
+
+	</ui:define>
+
+</ui:composition>

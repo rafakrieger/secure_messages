@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./principal.xhtml" xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="conteudo">
+
+		<p:panel id="painel_conteudo" header="Send message">
+			<h:form id="form_novo">
+				<p:panelGrid columns="4" layout="flex"
+					columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"
+					contentStyleClass="p-align-baseline ui-fluid">			
+					
+					<p:commandLink for="user" id="ajax" update="user"
+						action="#{userC.loadUsers}" process="@this"
+						style="margin-right:20px;">
+						<h:outputText value="Load users" />
+					</p:commandLink>
+
+					<p:selectOneMenu id="user" value="#{userC.message.receiver.id}"
+						filter="true" filterMatchMode="startsWith">>						
+						<f:selectItem itemLabel="Choose user..." itemValue="" />
+						<f:selectItems value="#{userC.comboUsers}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="message" value="Message:" />
+					<p:inputTextarea id="message" value="#{userC.content}"
+						required="true" requiredMessage="Message required" />
+
+				</p:panelGrid>
+
+				<p:commandButton value="Send" actionListener="#{userC.send}"
+					update="@all" />
+
+			</h:form>
+
+		</p:panel>
+
+	</ui:define>
+
+</ui:composition>

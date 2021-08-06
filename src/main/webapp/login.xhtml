@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Secure Messages</title>
+	<h:outputStylesheet name="./css/cssLayout.css" />
+	<h:outputStylesheet library="css" name="default.css" />
+	<h:outputStylesheet library="css" name="primeflex.min.css" />
+</h:head>
+<h:body>
+	<div class="p-grid">
+
+		<div id="top" class="p-col-12">
+			<h:outputText id="logo_texto" value="Secure Messages" />
+		</div>
+
+
+		<div class="card">
+    		<h:form>
+		        <div class="p-field p-grid">
+		            <p:outputLabel for="login" styleClass="p-col-fixed" style="width:100px" value="Login"/>
+		            <div class="p-col">
+		                <p:inputText id="login" value="#{userC.user.login}" label="Login" required="true"/>
+		            </div>
+		        </div>
+		
+		        <div class="p-field p-grid">
+		            <p:outputLabel for="password" styleClass="p-col-fixed" style="width:100px" value="Password"/>
+		            <div class="p-col">
+		                <p:password id="password" value="#{userC.user.password}" label="Password" required="true"/>
+		            </div>
+		        </div>
+		        		
+		        <p:commandButton action="#{userC.login}" value="Enter"/>
+		        
+		        <p:link outcome="new" value="New" style="margin-left:20px;" />
+		
+		        <p:messages id="messages" showDetail="true">
+		            <p:autoUpdate/>
+		        </p:messages>
+    		</h:form>
+		</div>
+
+		<div id="content" class="p-col-10 left_content">
+
+			<p:ajaxStatus onstart="PF('statusDialog').show()"
+				onsuccess="PF('statusDialog').hide()" />
+			<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+				closable="false" resizable="false" showHeader="false">
+				<div class="p-text-center">
+					<h:graphicImage library="img" name="loading.gif" />
+				</div>
+			</p:dialog>
+
+			<p:messages id="messages" showSummary="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+
+			<ui:insert name="conteudo">				
+			</ui:insert>
+
+		</div>
+	</div>
+</h:body>
+</html>
+

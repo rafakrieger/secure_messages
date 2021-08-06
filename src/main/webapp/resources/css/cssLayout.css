@@ -1,0 +1,32 @@
+
+#top {
+    position: relative;
+    background-color: purple;
+    color: white;
+    padding: 30px;
+    margin: 0px 0px 10px 0px;
+    border-radius: 4px;
+}
+
+#painel_conteudo{
+    border-radius: 4px;
+}
+
+/*#bottom {
+    position: relative;
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+}*/
+
+#left {
+    float: left;
+    padding: 5px;
+}
+
+.left_content {
+    padding: 5px;
+}
+
+
+
